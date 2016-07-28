@@ -1,4 +1,4 @@
-package com.sadman.loginapp.response;
+package com.sadman.nglogin.response;
 
 /**
  * @author Sadman
