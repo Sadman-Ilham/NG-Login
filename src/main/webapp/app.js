@@ -1,0 +1,1 @@
+var ngLoginApp = angular.module('ngLoginApp', ['ngRoute']);

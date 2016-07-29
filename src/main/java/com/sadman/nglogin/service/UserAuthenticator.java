@@ -25,7 +25,7 @@ public class UserAuthenticator {
             User user = UserDataManager.load(credential.getUserId());
             if (credential.getPassword().equals(user.getPassword())) {
                 user.setIsAuthenticated(true);
-                return new Response(200, "Successful login");
+                return new Response(200, "Successful login", credential.getUserId());
             }
         }
         return new Response(401, "Invalid username or password");

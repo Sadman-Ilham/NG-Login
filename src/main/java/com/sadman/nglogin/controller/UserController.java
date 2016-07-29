@@ -4,6 +4,7 @@ import com.sadman.nglogin.model.Credential;
 import com.sadman.nglogin.model.Response;
 import com.sadman.nglogin.model.User;
 import com.sadman.nglogin.service.UserAuthenticator;
+import com.sadman.nglogin.service.UserDetailsRetriever;
 import com.sadman.nglogin.service.UserRegistrant;
 import com.sadman.nglogin.utils.UserDataManager;
 
@@ -40,8 +41,18 @@ public class UserController {
     @GET
     @Path("/details/{userId}")
     @Produces({MediaType.APPLICATION_JSON})
-    public User getDetails(@PathParam("userId") String userId) {
-        return UserDataManager.load(userId);
+    public Response getDetails(@PathParam("userId") String userId) {
+        UserDetailsRetriever detailsRetriever = new UserDetailsRetriever();
+        return detailsRetriever.getUserDetails(userId);
+    }
+
+    @POST
+    @Path("/invalidate")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response invalidate(String userId) {
+        UserAuthenticator authenticator = new UserAuthenticator();
+        return authenticator.invalidate(userId);
     }
 
     @GET

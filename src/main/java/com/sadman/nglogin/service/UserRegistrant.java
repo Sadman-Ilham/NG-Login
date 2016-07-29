@@ -24,7 +24,7 @@ public class UserRegistrant {
             UserDataManager.save(user);
             return new Response(201, "Registration done successfully!");
         } else {
-            return new Response(101, "User with similar UserID already exist!");
+            return new Response(101, "User with similar User ID already exist!");
         }
     }
 
