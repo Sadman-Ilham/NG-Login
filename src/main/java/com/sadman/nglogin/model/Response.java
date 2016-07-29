@@ -1,4 +1,4 @@
-package com.sadman.nglogin.response;
+package com.sadman.nglogin.model;
 
 /**
  * @author Sadman
@@ -7,8 +7,12 @@ package com.sadman.nglogin.response;
 public class Response extends BaseResponse {
     Object item;
 
-    public Response(int responseCode, Object item) {
-        super(responseCode);
+    public Response(int responseCode, String responseMessage) {
+        super(responseCode, responseMessage);
+    }
+
+    public Response(int responseCode, String responseMessage, Object item) {
+        this(responseCode, responseMessage);
         this.item = item;
     }
 
