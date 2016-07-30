@@ -53,7 +53,7 @@ ngLoginApp.controller('dashboardController', ['$scope', 'userService', '$routePa
         if (data.responseCode === 401) $location.path('/');
         else if (data.responseCode === 101) $scope.error = data.responseMessage;
         else {
-            data.item.dateOfBirth = new Date(data.item.dateOfBirth);
+            data.item.dateOfBirth = new Date(data.item.dateOfBirth).toString("dd-MMM-yyyy");
             $scope.userDetails = data.item;
         }
     };

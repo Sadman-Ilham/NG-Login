@@ -22,7 +22,8 @@ public class UserAuthenticator {
      * {@code Response} with 401 otherwise.
      */
     public Response authenticate(Credential credential) {
-        if (UserDataManager.checkExistence(credential.getUserId())) {
+        if (credential.getUserId() != null && credential.getPassword() != null
+                && UserDataManager.checkExistence(credential.getUserId())) {
             User user = UserDataManager.load(credential.getUserId());
             if (credential.getPassword().equals(user.getPassword())) {
                 user.setIsAuthenticated(true);

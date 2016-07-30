@@ -8,7 +8,7 @@ ngLoginApp.config(function ($routeProvider) {
                     }
                 }
             },
-            templateUrl: 'login.html',
+            templateUrl: '/app/views/login.html',
             controller: 'loginController'
         })
         .when('/registration', {
@@ -19,11 +19,11 @@ ngLoginApp.config(function ($routeProvider) {
                     }
                 }
             },
-            templateUrl: 'registration.html',
+            templateUrl: '/app/views/registration.html',
             controller: 'registrationController'
         })
         .when('/dashboard', {
-            templateUrl: 'dashboard.html',
+            templateUrl: '/app/views/dashboard.html',
             controller: 'dashboardController'
         })
         .otherwise({ redirectTo: '/' })
