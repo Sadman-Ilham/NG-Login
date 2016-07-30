@@ -3,7 +3,7 @@ ngLoginApp.config(function ($routeProvider) {
         .when('/', {
             resolve: {
                 "check": function (userService, $location) {
-                    if (userService.loadUser()) {
+                    if (userService.isUserAuthenticated()) {
                         $location.path('/dashboard');
                     }
                 }
@@ -14,7 +14,7 @@ ngLoginApp.config(function ($routeProvider) {
         .when('/registration', {
             resolve: {
                 "check": function (userService, $location) {
-                    if (userService.loadUser()) {
+                    if (userService.isUserAuthenticated()) {
                         $location.path('/dashboard');
                     }
                 }

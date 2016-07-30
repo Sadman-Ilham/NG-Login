@@ -33,7 +33,9 @@ public class UserRequestFilter implements ContainerRequestFilter {
         if (this.isFilterAllowed(containerRequest.getRequestUri().toString())) {
             UserAuthenticator authenticator = new UserAuthenticator();
             List<String> userId = containerRequest.getRequestHeader("userId");
-            if (userId != null && !authenticator.isAuthenticated(userId.get(0))) {
+            List<String> password = containerRequest.getRequestHeader("password");
+            if (userId == null || password == null
+                    || !authenticator.isAuthenticated(userId.get(0), password.get(0))) {
                 try {
                     containerRequest.setUris(new URI(BASE_URI), new URI(INVALID_REQUEST_URI));
                 } catch (URISyntaxException e) {e.printStackTrace();}

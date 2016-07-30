@@ -46,15 +46,6 @@ public class UserController {
         return detailsRetriever.getUserDetails(userId);
     }
 
-    @POST
-    @Path("/invalidate")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response invalidate(String userId) {
-        UserAuthenticator authenticator = new UserAuthenticator();
-        return authenticator.invalidate(userId);
-    }
-
     @GET
     @Path("/error")
     @Produces({MediaType.APPLICATION_JSON})

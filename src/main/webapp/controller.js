@@ -14,7 +14,7 @@ ngLoginApp.controller('loginController', ['$scope', 'userService', '$location',
     var viewResponse = function (data) {
         if (data.responseCode === 401) $scope.error = data.responseMessage;
         else {
-            userService.saveUser(data.item);
+            userService.saveCookieCredential(data.item);
             $location.path('/dashboard');
         }
     };
@@ -58,14 +58,10 @@ ngLoginApp.controller('dashboardController', ['$scope', 'userService', '$routePa
         }
     };
 
-    userService.getUser(userService.loadUser()).then(viewResponse);
+    userService.getUser().then(viewResponse);
 
     $scope.invalidate = function () {
-        userService.invalidate(userService.loadUser()).then(redirectToLandingPage);
-    };
-
-    var redirectToLandingPage = function () {
-        userService.deleteUser();
+        userService.invalidateUser();
         $location.path('/');
     };
 }]);

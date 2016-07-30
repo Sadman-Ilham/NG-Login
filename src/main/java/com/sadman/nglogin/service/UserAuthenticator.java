@@ -17,16 +17,16 @@ public class UserAuthenticator {
     /**
      * Checks if the {@code Credential} is verified or not
      *
-     * @param   credential
-     * @return  {@code Response} with 200 if {@code Credential} is verified,
-     *          {@code Response} with 401 otherwise.
+     * @param credential
+     * @return {@code Response} with 200 if {@code Credential} is verified,
+     * {@code Response} with 401 otherwise.
      */
     public Response authenticate(Credential credential) {
         if (UserDataManager.checkExistence(credential.getUserId())) {
             User user = UserDataManager.load(credential.getUserId());
             if (credential.getPassword().equals(user.getPassword())) {
                 user.setIsAuthenticated(true);
-                return new Response(ResponseCode.OPERATION_SUCCESSFUL.getCode(), "Successful login", credential.getUserId());
+                return new Response(ResponseCode.OPERATION_SUCCESSFUL.getCode(), "Successful login", credential);
             }
         }
         return new Response(ResponseCode.AUTHENTICATION_FAILED.getCode(), "Invalid username or password");
@@ -39,30 +39,14 @@ public class UserAuthenticator {
      * @param userId
      * @return {@code true} if user is already authenticated, {@code false} otherwise
      */
-    public boolean isAuthenticated(String userId) {
+    public boolean isAuthenticated(String userId, String password) {
         if (UserDataManager.checkExistence(userId)) {
             User user = UserDataManager.load(userId);
-            return user.isAuthenticated();
+            if (password.equals(user.getPassword())) {
+                return true;
+            }
         }
         return false;
-    }
-
-    /**
-     * Invalidates a {@code User} only if it exists and is authenticated
-     *
-     * @param   userId the user id of the corresponding {@code User} that needs to be invalidate
-     * @return  {@code Response} with 200 if log out operation is successful,
-     *          with 101 if {@code User} is already invalidated or does not exist
-     */
-    public Response invalidate(String userId) {
-        if (UserDataManager.checkExistence(userId)) {
-            if (!UserDataManager.load(userId).isAuthenticated()) {
-                return new Response(ResponseCode.AUTHENTICATION_FAILED.getCode(), "User is already logged out from the system");
-            }
-            UserDataManager.load(userId).setIsAuthenticated(false);
-            return new Response(ResponseCode.OPERATION_SUCCESSFUL.getCode(), "User is successfully logged out from the system");
-        }
-        return new Response(ResponseCode.OPERATION_FAILED.getCode(), "Invalid user id");
     }
 
     /**
