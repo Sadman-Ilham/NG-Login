@@ -1,4 +1,4 @@
-# NG-Login
+# ng-Login
 Just a login app
 
 #### Features
