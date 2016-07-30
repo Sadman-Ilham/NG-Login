@@ -22,4 +22,8 @@ Just a login app
 - Advanced
 	- Setup a tomcat server in the /opt/tomcat/ngloginserver directory
 	- Run the <strong>advance-build.sh</strong> to generate the war file and deploy it into the server(ngloginserver)
+
+###### Windows
+- Go to the project folder and execute <strong>build.bat</strong>
+
 * `For the above operation <strong>maven</strong must be installed in the system` *
