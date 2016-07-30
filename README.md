@@ -26,4 +26,4 @@ Just a login app
 ###### Windows
 - Go to the project folder and execute <strong>build.bat</strong>
 
-* `For the above operation <strong>maven</strong must be installed in the system` *
+*`For the above operation 'maven' must be installed in the system`*
