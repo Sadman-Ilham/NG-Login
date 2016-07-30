@@ -49,7 +49,7 @@ public class UserController {
     @GET
     @Path("/error")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getBadResponse() {
+    public Response getFailedAuthResponse() {
         UserAuthenticator authenticator = new UserAuthenticator();
         return authenticator.getFailedAuthResponse();
     }

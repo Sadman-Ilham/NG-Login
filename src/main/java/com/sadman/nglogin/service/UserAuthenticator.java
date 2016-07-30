@@ -56,7 +56,7 @@ public class UserAuthenticator {
      * @return Authentication failed {@code Response}
      */
     public Response getFailedAuthResponse() {
-        return new Response(ResponseCode.AUTHENTICATION_FAILED.getCode(), "User is not authenticated");
+        return new Response(ResponseCode.AUTHENTICATION_FAILED.getCode(), "Authenticated failed");
     }
 
 }
