@@ -19,7 +19,7 @@ public class UserRequestFilter implements ContainerRequestFilter {
 
     private static final String BASE_URI = "http://localhost:8085/api/";
     private static final String INVALID_REQUEST_URI = "http://localhost:8085/api/user/error";
-    private static final Set<String> nonRestrictedURISet = new HashSet<>(Arrays
+    private static final Set<String> NON_RRESTRICTED_URI_SET = new HashSet<>(Arrays
             .asList("http://localhost:8085/api/user/register", "http://localhost:8085/api/user/authenticate"));
 
     /**
@@ -51,7 +51,7 @@ public class UserRequestFilter implements ContainerRequestFilter {
      * @return {@code true} if the provided URI is allowed for filtering, {@code false} otherwise.
      */
     private boolean isFilterAllowed(String requestURI) {
-        return !nonRestrictedURISet.contains(requestURI);
+        return !NON_RRESTRICTED_URI_SET.contains(requestURI);
     }
 
 }
