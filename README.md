@@ -2,7 +2,7 @@
 Just a login app
 
 #### Features
-- A user can signin to the system by providing necessary information
+- A user can sign up for the system by providing necessary information
 - Registered user can login into the system by providing username and password
 - User can view his/her personal information if authentication is successful
 
