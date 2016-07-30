@@ -1,4 +1,4 @@
-package com.sadman.nglogin;
+package com.sadman.nglogin.enums;
 
 /**
  * @author Sadman

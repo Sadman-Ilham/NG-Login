@@ -1,6 +1,6 @@
 package com.sadman.nglogin.service;
 
-import com.sadman.nglogin.ResponseCode;
+import com.sadman.nglogin.enums.ResponseCode;
 import com.sadman.nglogin.model.Response;
 import com.sadman.nglogin.model.User;
 import com.sadman.nglogin.utils.UserDataManager;
