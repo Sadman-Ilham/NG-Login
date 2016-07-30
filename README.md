@@ -1,5 +1,4 @@
 # ng-Login
-Just a login app
 
 #### Features
 - A user can sign up for the system by providing necessary information
