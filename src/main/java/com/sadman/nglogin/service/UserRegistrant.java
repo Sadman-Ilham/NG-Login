@@ -1,5 +1,6 @@
 package com.sadman.nglogin.service;
 
+import com.sadman.nglogin.ResponseCode;
 import com.sadman.nglogin.model.Response;
 import com.sadman.nglogin.model.User;
 import com.sadman.nglogin.utils.UserDataManager;
@@ -22,9 +23,9 @@ public class UserRegistrant {
     public Response register(User user) {
         if (!UserDataManager.checkExistence(user.getUserId())) {
             UserDataManager.save(user);
-            return new Response(201, "Registration done successfully!");
+            return new Response(ResponseCode.REGISTRATION_SUCCESSFUL.getCode(), "Registration done successfully!");
         } else {
-            return new Response(101, "User with similar User ID already exist!");
+            return new Response(ResponseCode.OPERATION_FAILED.getCode(), "User with similar User ID already exist!");
         }
     }
 

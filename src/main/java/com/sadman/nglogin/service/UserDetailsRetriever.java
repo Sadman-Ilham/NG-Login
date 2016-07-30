@@ -1,5 +1,6 @@
 package com.sadman.nglogin.service;
 
+import com.sadman.nglogin.ResponseCode;
 import com.sadman.nglogin.model.Response;
 import com.sadman.nglogin.utils.UserDataManager;
 
@@ -19,9 +20,9 @@ public class UserDetailsRetriever {
      */
     public Response getUserDetails(String userId) {
         if (UserDataManager.checkExistence(userId)) {
-            return new Response(200, "User details successfully retrieved", UserDataManager.load(userId));
+            return new Response(ResponseCode.OPERATION_SUCCESSFUL.getCode(), "User details successfully retrieved", UserDataManager.load(userId));
         }
-        return new Response(101, "User doesn't exist!");
+        return new Response(ResponseCode.OPERATION_FAILED.getCode(), "User doesn't exist!");
     }
 
 }

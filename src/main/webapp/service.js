@@ -1,5 +1,3 @@
-var UserIdStorage;
-
 ngLoginApp.factory('userService', function userService($http) {
 
     var authenticate = function (credential) {
@@ -41,12 +39,17 @@ ngLoginApp.factory('userService', function userService($http) {
         return null;
     };
 
+    var deleteUser = function () {
+        document.cookie = 'ng-loggedInUserId=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    };
+
     return {
         authenticate: authenticate,
         register: register,
         getUser: getUser,
         invalidate: invalidate,
         saveUser: saveUser,
-        loadUser: loadUser
+        loadUser: loadUser,
+        deleteUser: deleteUser
     };
 });

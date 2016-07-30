@@ -1,4 +1,5 @@
-ngLoginApp.controller('loginController', function loginController($scope, userService, $location) {
+ngLoginApp.controller('loginController', ['$scope', 'userService', '$location',
+    function ($scope, userService, $location) {
     $scope.submit = function () {
         var userId = $scope.username;
         var password = $scope.password;
@@ -17,9 +18,10 @@ ngLoginApp.controller('loginController', function loginController($scope, userSe
             $location.path('/dashboard');
         }
     };
-});
+}]);
 
-ngLoginApp.controller('registrationController', function registrationController($scope, userService, $location) {
+ngLoginApp.controller('registrationController', ['$scope', 'userService', '$location',
+    function ($scope, userService, $location) {
     $scope.submit = function () {
         var fullName = $scope.fullname;
         var dateOfBirth = $scope.dob;
@@ -43,9 +45,10 @@ ngLoginApp.controller('registrationController', function registrationController(
         if (data.responseCode === 101) $scope.error = data.responseMessage;
         else $location.path('/');
     };
-});
+}]);
 
-ngLoginApp.controller('dashboardController', function dashboardController($scope, userService, $routeParams, $location) {
+ngLoginApp.controller('dashboardController', ['$scope', 'userService', '$routeParams', '$location',
+    function ($scope, userService, $routeParams, $location) {
     var viewResponse = function (data) {
         if (data.responseCode === 401) $location.path('/');
         else if (data.responseCode === 101) $scope.error = data.responseMessage;
@@ -62,6 +65,7 @@ ngLoginApp.controller('dashboardController', function dashboardController($scope
     };
 
     var redirectToLandingPage = function () {
+        userService.deleteUser();
         $location.path('/');
-    }
-});
+    };
+}]);

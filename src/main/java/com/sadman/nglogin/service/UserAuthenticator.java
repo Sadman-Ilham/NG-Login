@@ -1,5 +1,6 @@
 package com.sadman.nglogin.service;
 
+import com.sadman.nglogin.ResponseCode;
 import com.sadman.nglogin.model.Credential;
 import com.sadman.nglogin.model.Response;
 import com.sadman.nglogin.model.User;
@@ -25,10 +26,10 @@ public class UserAuthenticator {
             User user = UserDataManager.load(credential.getUserId());
             if (credential.getPassword().equals(user.getPassword())) {
                 user.setIsAuthenticated(true);
-                return new Response(200, "Successful login", credential.getUserId());
+                return new Response(ResponseCode.OPERATION_SUCCESSFUL.getCode(), "Successful login", credential.getUserId());
             }
         }
-        return new Response(401, "Invalid username or password");
+        return new Response(ResponseCode.AUTHENTICATION_FAILED.getCode(), "Invalid username or password");
     }
 
     /**
@@ -56,12 +57,21 @@ public class UserAuthenticator {
     public Response invalidate(String userId) {
         if (UserDataManager.checkExistence(userId)) {
             if (!UserDataManager.load(userId).isAuthenticated()) {
-                return new Response(101, "User is already logged out from the system");
+                return new Response(ResponseCode.AUTHENTICATION_FAILED.getCode(), "User is already logged out from the system");
             }
             UserDataManager.load(userId).setIsAuthenticated(false);
-            return new Response(200, "User is successfully logged out from the system");
+            return new Response(ResponseCode.OPERATION_SUCCESSFUL.getCode(), "User is successfully logged out from the system");
         }
-        return new Response(101, "Invalid user id");
+        return new Response(ResponseCode.OPERATION_FAILED.getCode(), "Invalid user id");
+    }
+
+    /**
+     * Generate a bad response when authentication is failed
+     *
+     * @return Authentication failed {@code Response}
+     */
+    public Response getFailedAuthResponse() {
+        return new Response(ResponseCode.AUTHENTICATION_FAILED.getCode(), "User is not authenticated");
     }
 
 }

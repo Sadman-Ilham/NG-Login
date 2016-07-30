@@ -1,10 +1,24 @@
 ngLoginApp.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
+            resolve: {
+                "check": function (userService, $location) {
+                    if (userService.loadUser()) {
+                        $location.path('/dashboard');
+                    }
+                }
+            },
             templateUrl: 'login.html',
             controller: 'loginController'
         })
         .when('/registration', {
+            resolve: {
+                "check": function (userService, $location) {
+                    if (userService.loadUser()) {
+                        $location.path('/dashboard');
+                    }
+                }
+            },
             templateUrl: 'registration.html',
             controller: 'registrationController'
         })

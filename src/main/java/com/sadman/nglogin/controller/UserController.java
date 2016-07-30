@@ -56,10 +56,11 @@ public class UserController {
     }
 
     @GET
-    @Path("/invalid")
+    @Path("/error")
     @Produces({MediaType.APPLICATION_JSON})
     public Response getBadResponse() {
-        return new Response(401, "User is not authenticated");
+        UserAuthenticator authenticator = new UserAuthenticator();
+        return authenticator.getFailedAuthResponse();
     }
 
 }
