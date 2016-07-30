@@ -20,7 +20,7 @@ Just a login app
 - General
 	- Linux users can simply go to the project folder and run the <strong>build.sh</strong> script to generate the war file
 - Advanced
-	- Setup a tomcat server in the /opt/tomcat/ngloginserver directory
+	- Setup a tomcat server in the /opt/tomcat/ngloginserver directory(use 8085 as the connector port for the server, otherwise client can not communicate to the rest services)
 	- Run the <strong>advance-build.sh</strong> to generate the war file and deploy it into the server(ngloginserver)
 
 ###### Windows
