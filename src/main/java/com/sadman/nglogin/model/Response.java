@@ -4,23 +4,28 @@ package com.sadman.nglogin.model;
  * @author Sadman
  * @since Jul 28, 2016
  */
-public class Response extends BaseResponse {
-    Object item;
+public class Response {
+    private int responseCode;
+    private String responseMessage;
 
     public Response(int responseCode, String responseMessage) {
-        super(responseCode, responseMessage);
+        this.responseCode = responseCode;
+        this.responseMessage = responseMessage;
     }
 
-    public Response(int responseCode, String responseMessage, Object item) {
-        this(responseCode, responseMessage);
-        this.item = item;
+    public int getResponseCode() {
+        return responseCode;
     }
 
-    public Object getItem() {
-        return item;
+    public void setResponseCode(int responseCode) {
+        this.responseCode = responseCode;
     }
 
-    public void setItem(Object item) {
-        this.item = item;
+    public String getResponseMessage() {
+        return responseMessage;
+    }
+
+    public void setResponseMessage(String responseMessage) {
+        this.responseMessage = responseMessage;
     }
 }

@@ -2,11 +2,11 @@ package com.sadman.nglogin.controller;
 
 import com.sadman.nglogin.model.Credential;
 import com.sadman.nglogin.model.Response;
+import com.sadman.nglogin.model.ResponseData;
 import com.sadman.nglogin.model.User;
 import com.sadman.nglogin.service.UserAuthenticator;
 import com.sadman.nglogin.service.UserDetailsRetriever;
 import com.sadman.nglogin.service.UserRegistrant;
-import com.sadman.nglogin.utils.UserDataManager;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -18,7 +18,7 @@ import javax.ws.rs.core.MediaType;
  * @since Jul 28, 2016
  */
 @Path("/user")
-public class UserController {
+public class UserResources {
 
     @POST
     @Path("/register")

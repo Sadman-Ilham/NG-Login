@@ -3,6 +3,7 @@ package com.sadman.nglogin.service;
 import com.sadman.nglogin.enums.ResponseCode;
 import com.sadman.nglogin.model.Credential;
 import com.sadman.nglogin.model.Response;
+import com.sadman.nglogin.model.ResponseData;
 import com.sadman.nglogin.model.User;
 import com.sadman.nglogin.utils.UserDataManager;
 
@@ -26,7 +27,7 @@ public class UserAuthenticator {
                 && UserDataManager.checkExistence(credential.getUserId())) {
             User user = UserDataManager.load(credential.getUserId());
             if (credential.getPassword().equals(user.getPassword())) {
-                return new Response(ResponseCode.OPERATION_SUCCESSFUL.getCode(), "Successful login", credential);
+                return new ResponseData(ResponseCode.OPERATION_SUCCESSFUL.getCode(), "Successful login", credential);
             }
         }
         return new Response(ResponseCode.AUTHENTICATION_FAILED.getCode(), "Invalid username or password");
