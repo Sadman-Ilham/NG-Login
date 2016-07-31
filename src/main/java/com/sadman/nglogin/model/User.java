@@ -13,15 +13,11 @@ public class User {
     private String about;
     private String userId;
     private String password;
-    private boolean isAuthenticated;
 
-    public User() {
-        this.isAuthenticated = false;
-    }
+    public User() {}
 
     public User(String fullName, Date dateOfBirth, String sex,
                 String about, String userId, String password) {
-        this();
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
@@ -76,14 +72,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public boolean isAuthenticated() {
-        return isAuthenticated;
-    }
-
-    public void setIsAuthenticated(boolean isAuthenticated) {
-        this.isAuthenticated = isAuthenticated;
     }
 
     @Override

@@ -26,7 +26,6 @@ public class UserAuthenticator {
                 && UserDataManager.checkExistence(credential.getUserId())) {
             User user = UserDataManager.load(credential.getUserId());
             if (credential.getPassword().equals(user.getPassword())) {
-                user.setIsAuthenticated(true);
                 return new Response(ResponseCode.OPERATION_SUCCESSFUL.getCode(), "Successful login", credential);
             }
         }
